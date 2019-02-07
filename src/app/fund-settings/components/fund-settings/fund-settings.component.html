@@ -1,0 +1,21 @@
+<div *ngIf="api_services.is_base_user === true">
+  <app-fund-login-again (all_okay)="onAllOkay($event)" *ngIf="!is_all_okay"></app-fund-login-again>
+
+  <article class="message {{ status? 'is-success' : 'is-danger' }}" *ngIf="is_all_okay">
+    <div class="message-header">
+      <p>Fund Status (Under authority)</p>
+    </div>
+    <div class="message-body">
+      <h1 class="subtitle">Fund is {{ status? 'unlocked' : 'locked' }}.</h1>
+      <p *ngIf="api_services.is_base_user">Click the button to {{ status? 'lock' : 'unlock' }} it.</p>
+      <button *ngIf="api_services.is_base_user" class="{{ status? 'is-danger' : 'is-success' }} button" (click)="toggle_fund()">{{
+        status? 'Lock it' : 'Unlock it' }}</button>
+    </div>
+  </article>
+</div>
+
+<article class="message is-danger" *ngIf="!api_services.is_base_user">
+  <div class="message-body">
+    You are not an Authorizer.
+  </div>
+</article>

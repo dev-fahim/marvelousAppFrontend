@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="segment">
+    <h1 class="title">Credit Archives</h1>
+  </div>
+  <input type="text" class="input my-2" placeholder="Search here.." [(ngModel)]="search">
+  <button class="is-small basic button my-2" (click)="get_all()">Search</button>
+
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead class="has-background-light">
+      <th *ngFor="let column of table_columns">{{ column | titlecase }}</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of all_funds">
+        <td>{{ data.action_by | titlecase }}</td>
+        <td>{{ data.added | date:'fullDate' }}</td>
+        <td>{{ data.old_fund_added | date:'fullDate' }}</td>
+        <td>{{ data.old_source }}</td>
+        <td>{{ data.new_source }}</td>
+        <td>{{ data.old_amount }}</td>
+        <td>{{ data.new_amount }}</td>
+        <td>{{ data.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

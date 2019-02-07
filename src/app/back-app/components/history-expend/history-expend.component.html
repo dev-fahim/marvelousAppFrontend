@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="segment">
+    <h1 class="title">Debit Activities</h1>
+  </div>
+  <input type="text" class="input my-2" placeholder="Search here.." [(ngModel)]="search">
+  <button class="is-small basic button my-2" (click)="get_all()">Search</button>
+
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead class="has-background-light">
+      <th *ngFor="let column of table_columns">{{ column | titlecase }}</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of all_expends">
+        <td>{{ data.action_by | titlecase }}</td>
+        <td>{{ data.added | date:'fullDate' }}</td>
+        <td>{{ data.old_expend_date | date:'fullDate' }}</td>
+        <td>{{ data.related_records }}</td>
+        <td>{{ data.new_expend_heading }}</td>
+        <td>{{ data.old_description }}</td>
+        <td>{{ data.new_description }}</td>
+        <td>{{ data.old_amount }}</td>
+        <td>{{ data.new_amount }}</td>
+        <td>{{ data.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
