@@ -1,7 +1,138 @@
-<app-sidebar></app-sidebar>
-<app-toolbar></app-toolbar>
+<!--
+    <app-sidebar></app-sidebar>
+
 <div id="segment">
     <div class="px-5 pt-3">
         <router-outlet></router-outlet>
     </div>
 </div>
+-->
+<app-toolbar></app-toolbar>
+<div class="page-wrapper chiller-theme {{ toggled? 'toggled': '' }}">
+    <a id="show-sidebar" class="button is-basic" href="#" (click)="toggle_btn()">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand">
+                <a>BayRAM</a>
+                <div id="close-sidebar" (click)="toggle_btn()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>General</span>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span>Credit Management</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a routerLink="/main-app/credit/fund/source/list-add">Heads
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/credit/fund/record/list-add">Records</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Debit Management</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li><a routerLink="/main-app/expenditure/heading">Heads</a></li>
+                                <li><a routerLink="/main-app/expenditure/record">Records</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fas fa-money-bill"></i>
+                            <span>Loan Management</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a routerLink="/main-app/loan-app/credit/list-add">Loan Recieve</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/loan-app/debit/list-add">Loan Return</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/loan-giving/credit/list-add">Loan Refund</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/loan-giving/debit/list-add">Loan Payment</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fas fa-history"></i>
+                            <span>Activities</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a routerLink="/main-app/back-app/credits">Credit Activities</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/back-app/debits">Debit Activities</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="far fa-file-archive"></i>
+                            <span>Archives</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a routerLink="/main-app/archive-app/credits">Credit Archives</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/main-app/archive-app/debits">Debit Archives</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="header-menu">
+                        <span>Extra</span>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fas fa-info"></i>
+                            <span>Company</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fas fa-users"></i>
+                            <span>Sub Users</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+        <!-- sidebar-content  -->
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+        <router-outlet></router-outlet>
+    </main>
+    <!-- page-content" -->
+</div>
+<!-- page-wrapper -->

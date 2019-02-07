@@ -1,7 +1,11 @@
-<div class="container">
+<div class="segment container">
+  <div class="mb-3">
+    <div class="title">
+      Loan <i class="fas fa-angle-right"></i> Return <small class="subtitle">Edit & Archive</small>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12">
-      <div class="segment">
         <article class="message is-danger" *ngIf="!fund_not_locked">
           <div class="message-header">
             <p>Fund</p>
@@ -10,7 +14,8 @@
             Fund Locked
           </div>
         </article>
-        <article class="message" *ngFor="let message of messages" [ngClass]="{'is-danger': message.type === 'error', 'is-success': message.type === 'positive'}">
+        <article class="message" *ngFor="let message of messages"
+          [ngClass]="{'is-danger': message.type === 'error', 'is-success': message.type === 'positive'}">
           <div class="message-header">
             <p>{{ message.type === 'error'? 'Error' : 'Success' }}</p>
           </div>
@@ -18,12 +23,13 @@
             {{ message.message }}
           </div>
         </article>
-        <h3 class="subtitle">Edit Debit Record</h3>
         <form [formGroup]='form'>
           <label class="label">Debit Head</label>
           <div class="select">
-            <select formControlName="expend_heading" [ngClass]="{'is-danger': expend_heading.touched && expend_by.invalid}">
-              <option value="">{{ expenditure_data.expend_heading_name? '':expenditure_data.expend_heading_name }}</option>
+            <select formControlName="expend_heading"
+              [ngClass]="{'is-danger': expend_heading.touched && expend_by.invalid}">
+              <option value="">{{ expenditure_data.expend_heading_name? '':expenditure_data.expend_heading_name }}
+              </option>
               <option value="{{ data.id }}" *ngFor="let data of all_headings">{{ data.heading }}</option>
             </select>
           </div>
@@ -61,7 +67,8 @@
               <div class="segment">
                 <div class="field">
                   <label class="label" class="label">Leave a message</label>
-                  <textarea class="textarea" class="textarea" placeholder="Your Message" formControlName="extra_description"></textarea>
+                  <textarea class="textarea" class="textarea" placeholder="Your Message"
+                    formControlName="extra_description"></textarea>
                 </div>
                 <div class="button is-success mr-2" appShadow (click)="toggle_modal()">Cancel</div>
                 <div class="button is-danger" appShadow (click)="onDelete()" (click)="toggle_modal()">Confirm</div>
@@ -74,7 +81,8 @@
               <div class="segment">
                 <div class="field">
                   <label class="label" class="label">Leave a message</label>
-                  <textarea class="textarea" class="textarea" placeholder="Your Message" formControlName="extra_description"></textarea>
+                  <textarea class="textarea" class="textarea" placeholder="Your Message"
+                    formControlName="extra_description"></textarea>
                 </div>
                 <div class="button is-success mr-2" appShadow (click)="toggle_modal_update()">Cancel</div>
                 <div class="button is-info" appShadow (click)="onSubmit()" (click)="toggle_modal_update()">Done</div>
@@ -86,8 +94,8 @@
           appShadow>Upgrade</button>
         <hr>
         <button class="button is-warning mr-2" (click)="onReset()" appShadow>Reset</button>
-        <button class="button is-danger" [ngClass]="{'is-loading': loading_del}" (click)="toggle_modal()" appShadow>Archive</button>
-      </div>
+        <button class="button is-danger" [ngClass]="{'is-loading': loading_del}" (click)="toggle_modal()"
+          appShadow>Archive</button>
     </div>
   </div>
 </div>

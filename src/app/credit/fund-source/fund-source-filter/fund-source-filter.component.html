@@ -27,7 +27,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="field" [ngClass]="{'is-danger': form.get('search').invalid && form.get('search').touched}">
       <label class="label" for="search">Search</label>
-      <input class="input" type="text" formControlName="search">
+      <input class="input" type="text" formControlName="search" placeholder="Search here...">
     </div>
     <div class="field" [ngClass]="{'error': form.get('ordering').invalid && form.get('ordering').touched}">
       <label class="label" for="ordering">Ordering</label>
@@ -43,7 +43,6 @@
         </select>
       </div>
     </div>
-    <hr>
     <button class="button is-link" [ngClass]="{'is-loading': loading_on_filter}" type="submit" appShadow>Filter</button>
   </form>
 </div>

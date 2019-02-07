@@ -29,6 +29,8 @@ import { NotificationMessageService } from './notification-message.service';
 import { LoanService } from './service/loan/loan.service';
 import { LoanGivingService } from './service/loan-giving/loan-giving.service';
 
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { LoanGivingService } from './service/loan-giving/loan-giving.service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'csrftoken',
       headerName: 'X-CSRFToken',
