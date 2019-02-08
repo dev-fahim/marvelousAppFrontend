@@ -38,17 +38,17 @@ export class LoanService {
     }).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   add_record(data: models.LoanExpendPOSTModel) {
     return this._http.post(EXPENDITURE_RECORD_LOAN_API_URL + 'list-add/', JSON.stringify(data)).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
     );
@@ -58,10 +58,10 @@ export class LoanService {
     return this._http.get<models.LoanExpendGETModel>(EXPENDITURE_RECORD_LOAN_API_URL + 'edit/' + uuid + '/').pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-      )
+    );
   }
 
   update_record(data: models.LoanExpendPUTModel, uuid: string) {
@@ -70,7 +70,7 @@ export class LoanService {
     ).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
     );
@@ -80,10 +80,10 @@ export class LoanService {
     return this._http.put<models.ExpenditureRecordPUTModel>(EXPENDITURE_RECORD_LOAN_API_URL + 'edit/' + uuid + '/', payloads).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   get_all_funds(filters: CreditFundRecordListFilter = {
@@ -113,49 +113,49 @@ export class LoanService {
     }).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   add_funds(data: any) {
     return this._http.post<models.LoanCreditPOSTModel>(CREDIT_LOAN_API_URL + 'list-add/', JSON.stringify(data)).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   get_specific_fund_record(uuid: string) {
     return this._http.get<models.LoanCreditGETModel>(CREDIT_LOAN_API_URL + 'edit/' + uuid + '/').pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   update_funds(data: any, uuid: string) {
     return this._http.put<models.LoanCreditPUTModel>(CREDIT_LOAN_API_URL + 'edit/' + uuid + '/', JSON.stringify(data)).pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 
   delete_funds(uuid: string) {
     return this._http.delete<models.LoanCreditPUTModel>(CREDIT_LOAN_API_URL + 'edit/' + uuid + '/').pipe(
       catchError(
         (error: HttpErrorResponse) => {
-          return throwError(common.get_http_response_error(error))
+          return throwError(common.get_http_response_error(error));
         }
       )
-    )
+    );
   }
 }

@@ -29,5 +29,5 @@ export class LoanGivingRecieveService extends RecordService {
   delete_record(uuid: string, payloads: models.ExpenditureRecordPUTModel) {
     return super.delete_record(uuid, payloads);
   }
-  
+
 }

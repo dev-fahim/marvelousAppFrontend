@@ -13,5 +13,5 @@ if (DEBUG) {
     LOCAL_SERVER = 'http://192.168.1.239:8000/';
 } else {
     LOCAL_REST_API_SERVER = '/api/';
-    LOCAL_SERVER = '/'
+    LOCAL_SERVER = '/';
 }
