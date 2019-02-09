@@ -4,6 +4,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/cor
 import { FormGroup, FormControl } from '@angular/forms';
 import { HeadingService } from '../../../service/expenditure/heading.service';
 import { saveAs as importedSaveAs } from "file-saver";
+import { today_date } from 'src/app/service/today.date';
 
 @Component({
   selector: 'app-record-filter',
@@ -101,7 +102,7 @@ export class RecordFilterComponent implements OnInit {
   public onCheckOut() {
     this._fileDownloadService.downloadResource(this.cho_url).subscribe(
       (blob) => {
-        importedSaveAs(blob, 'checkoutReportOnDebit.csv');
+        importedSaveAs(blob, 'checkoutReport' + today_date() + '.pdf');
       }
     )
   }
@@ -109,7 +110,7 @@ export class RecordFilterComponent implements OnInit {
   public download(url: string, type: string) {
   this._fileDownloadService.downloadResource(url).subscribe(
     (blob) => {
-      importedSaveAs(blob, 'reportOnDebit.' + type);
+      importedSaveAs(blob, 'report_' + today_date() + '.' + type);
     }
   )
 }

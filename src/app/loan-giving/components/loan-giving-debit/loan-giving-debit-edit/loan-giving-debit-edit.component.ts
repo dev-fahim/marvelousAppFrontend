@@ -186,7 +186,7 @@ export class LoanGivingDebitEditComponent implements OnInit {
         (result) => {
           this.loading_del = false;
           this.messages.splice(0, 0, { message: 'Expenditure record has been DELETED successfuly.', type: 'positive' });
-          this._router.navigate(['/main-app/loan-giving/debit/lisi-add'])
+          this._router.navigate(['/main-app/loan-giving/debit/list-add']);
         },
         (error: errors.AppError) => {
           this.loading = false;

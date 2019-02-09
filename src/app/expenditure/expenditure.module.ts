@@ -32,10 +32,10 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    ExpenditureRoutingModule,
-    SharedModule
+    ExpenditureRoutingModule
   ]
 })
 export class ExpenditureModule { }

@@ -4,7 +4,7 @@
       Debit <i class="fas fa-angle-right"></i> Records <small class="subtitle">Add & Filter</small>
     </div>
   </div>
-  <button class="button is-success is-small mb-2" (click)="toggle_modal()" id="add-button">Add Debit</button>
+  <button class="button is-success mb-2" (click)="toggle_modal()" id="add-button">Add Debit</button>
   <div class="modal" [ngClass]="{'is-active': show_modal}">
     <div class="modal-background has-background white"></div>
     <div class="modal-card">
@@ -22,7 +22,7 @@
       <app-record-filter (filter_data)="onFilter($event)"></app-record-filter>
     </div>
     <div class="col-12 mt-4">
-      <table class="table is-bordered is-striped is-fullwidth">
+      <table class="table is-bordered is-hoverable is-striped is-fullwidth">
         <thead class="has-background-light" appShadow>
           <tr>
             <th>
@@ -49,7 +49,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of all_expenditures" [ngClass]="{'has-background-warning': !data.is_verified}" appShadow>
+          <tr appShadow 
+          *ngFor="let data of all_expenditures" 
+          [ngClass]="{'has-background-warning': !data.is_verified}"
+          >
             <td class="selectable"><a class="header" [routerLink]="[ '/main-app/expenditure/record/edit', data.uuid ]">{{
                 data.expend_heading_name |
                 titlecase }}</a></td>

@@ -1,5 +1,4 @@
-import { Directive, ElementRef, AfterViewInit, HostListener, Renderer2 } from "@angular/core";
-declare var jQuery: any;
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appShadow]'

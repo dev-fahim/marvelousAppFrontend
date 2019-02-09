@@ -1,5 +1,6 @@
 <div class="segment">
-    <article class="message is-danger" *ngFor="let message of messages" [ngClass]="{'is-danger': message.type === 'error', 'is-success': message.type === 'positive'}">
+    <article class="message is-danger" *ngFor="let message of messages" 
+    [ngClass]="{'is-danger animated bounceIn': message.type === 'error', 'is-success animated jackInTheBox': message.type === 'positive'}">
       <div class="message-header">
         <p>{{ message.type === 'error'? 'Error' : 'Success' }}</p>
       </div>

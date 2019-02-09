@@ -1,6 +1,6 @@
 import { AuthService } from './../login/auth/auth.service';
 import { RootObject, CreditFundSourceGETModel, ExpenditureHeadingGETModel } from './../service/models';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SourceService } from '../service/credit/source.service';
 import { HeadingService } from '../service/expenditure/heading.service';
 import { RecordService } from '../service/expenditure/record.service';
@@ -12,48 +12,48 @@ import * as errors from '../common';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   title = 'project';
   fund_status = true;
-  all_sources: CreditFundSourceGETModel[];
-  all_headings: ExpenditureHeadingGETModel[];
+  all_sources: CreditFundSourceGETModel[] = [];
+  all_headings: ExpenditureHeadingGETModel[] = [];
   todays_all_expenditures: any[] = [];
   myDate: any;
   loading = true;
-  arr = [1,2,3,4]
+  arr = [1, 2, 3, 4];
   today = today_date();
   messages: {message: string, type: string}[] = [];
   api_services: RootObject = {
-    "is_base_user": false,
-    "is_sub_user": false,
-    "user_permissions": {
-        "canAdd": false,
-        "canEdit": false,
-        "canList": false,
-        "canRetrieve": false,
-        "canFundSourceListCreate": false,
-        "canFundSourceEdit": false,
-        "is_active": false,
-        "user_type": ""
+    'is_base_user': false,
+    'is_sub_user': false,
+    'user_permissions': {
+        'canAdd': false,
+        'canEdit': false,
+        'canList': false,
+        'canRetrieve': false,
+        'canFundSourceListCreate': false,
+        'canFundSourceEdit': false,
+        'is_active': false,
+        'user_type': ''
     },
-    "account_status": {
-        "is_approved": false,
-        "is_locked": false,
-        "is_active": false
+    'account_status': {
+        'is_approved': false,
+        'is_locked': false,
+        'is_active': false
     },
-    "todays_open_credit_fund": 0,
-    "remaining_credit_fund_amount": 0,
-    "this_month_total_expend_amount": 0,
-    "total_unauthorized_expend_amount": 0,
-    "total_credit_fund_amount": 0,
-    "fund_status": false,
-    "this_year_total_expend_amoun": 0,
-    "this_year_remaining_credit_fund_amount": 0,
-    "this_year_total_credit_fund_amount": 0,
-    "this_year_total_unauthorized_expend_amount": 0,
-    "this_month_total_credit_fund_amount": 0,
-    "this_year": ""
-}
+    'todays_open_credit_fund': 0,
+    'remaining_credit_fund_amount': 0,
+    'this_month_total_expend_amount': 0,
+    'total_unauthorized_expend_amount': 0,
+    'total_credit_fund_amount': 0,
+    'fund_status': false,
+    'this_year_total_expend_amoun': 0,
+    'this_year_remaining_credit_fund_amount': 0,
+    'this_year_total_credit_fund_amount': 0,
+    'this_year_total_unauthorized_expend_amount': 0,
+    'this_month_total_credit_fund_amount': 0,
+    'this_year': ''
+};
 
   constructor(
     public sourceService: SourceService,
@@ -73,46 +73,46 @@ export class DashboardComponent {
         (error: errors.AppError) => {
           this.loading = false;
           const main_error = errors.throw_http_response_error(error);
-          return this.messages.push({message: main_error.detail, type: main_error.type})
+          return this.messages.push({message: main_error.detail, type: main_error.type});
         }
-      )
+      );
   }
 
   ngOnInit() {
-    this.get_api_services()
-    
+    this.get_api_services();
+
     this.sourceService.get_all_sources({ordering: '', search: ''})
       .subscribe(
         (result) => {
           this.loading = false;
-          let data = [];
+          const data = [];
           for (const source of result) {
-            if (source.is_deleted === false) {data.push(source)}
+            if (source.is_deleted === false) {data.push(source); }
           }
           return this.all_sources = data;
         },
         (error: errors.AppError) => {
           this.loading = false;
           const main_error = errors.throw_http_response_error(error);
-          return this.messages.push({message: main_error.detail, type: main_error.type})
+          return this.messages.push({message: main_error.detail, type: main_error.type});
         }
-      )
+      );
     this.headingService.get_all_headings()
       .subscribe(
         (result) => {
           this.loading = false;
-          let data = [];
+          const data = [];
           for (const heading of result) {
-            if (heading.is_deleted === false) {data.push(heading)}
+            if (heading.is_deleted === false) {data.push(heading); }
           }
           return this.all_headings = data;
         },
         (error: errors.AppError) => {
           this.loading = false;
           const main_error = errors.throw_http_response_error(error);
-          return this.messages.push({message: main_error.detail, type: main_error.type})
+          return this.messages.push({message: main_error.detail, type: main_error.type});
         }
-      )
+      );
     this.recordService.get_all_expenditures({
       is_verified: '',
       amount: '',
@@ -135,9 +135,9 @@ export class DashboardComponent {
         (error: errors.AppError) => {
           this.loading = false;
           const main_error = errors.throw_http_response_error(error);
-          return this.messages.push({message: main_error.detail, type: main_error.type})
+          return this.messages.push({message: main_error.detail, type: main_error.type});
         }
-      )
+      );
   }
 
   get_fund_status() {
@@ -145,7 +145,7 @@ export class DashboardComponent {
   }
 
   get_expend_length() {
-    return this.todays_all_expenditures.length
+    return this.todays_all_expenditures.length;
   }
 
   get_this_month_total_expend() {
@@ -202,5 +202,21 @@ export class DashboardComponent {
 
   onReload() {
     this.ngOnInit();
+  }
+
+  get_total_credit_heads() {
+    let i = 0;
+    for (const l of this.all_sources) {
+      i = i + 1;
+    }
+    return i;
+  }
+
+  get_total_debit_heads() {
+    let i = 0;
+    for (const l of this.all_headings) {
+      i = i + 1;
+    }
+    return i;
   }
 }
