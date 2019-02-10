@@ -1,5 +1,8 @@
+import { AuthService } from './../login/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { RootObject } from '../service/models';
+import * as errors from '../common';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +11,10 @@ import * as $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
   toggled = true;
+  is_approved = true;
+  is_locked = false;
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
   ngOnInit() {
 
@@ -35,6 +40,15 @@ export class HomeComponent implements OnInit {
       }
     });
 
+    this._auth.getUserPermission()
+      .subscribe(
+        (response) => {
+          this.is_approved = response.account_status.is_approved;
+        },
+        (error: errors.AppError) => {
+          return this.is_locked = true;
+        }
+      );
   }
 
   toggle_btn() {

@@ -11,9 +11,12 @@ import { LoanGivingDebitEditComponent } from './components/loan-giving-debit/loa
 import { LoanGivingCreditListComponent } from './components/loan-giving-credit/loan-giving-credit-list/loan-giving-credit-list.component';
 import { LoanGivingCreditAddComponent } from './components/loan-giving-credit/loan-giving-credit-add/loan-giving-credit-add.component';
 import { LoanGivingCreditEditComponent } from './components/loan-giving-credit/loan-giving-credit-edit/loan-giving-credit-edit.component';
-import { LoanGivingCreditFilterComponent } from './components/loan-giving-credit/loan-giving-credit-filter/loan-giving-credit-filter.component';
+import {
+  LoanGivingCreditFilterComponent
+} from './components/loan-giving-credit/loan-giving-credit-filter/loan-giving-credit-filter.component';
 import { LoanGivingDebitFilterComponent } from './components/loan-giving-debit/loan-giving-debit-filter/loan-giving-debit-filter.component';
 import { LoanGivingComponent } from './components/loan-giving/loan-giving.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { LoanGivingComponent } from './components/loan-giving/loan-giving.compon
     CommonModule,
     LoanGivingRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class LoanGivingModule { }

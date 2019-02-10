@@ -12,6 +12,7 @@ import { DebitListComponent } from './components/debit-list/debit-list.component
 import { DebitFilterComponent } from './components/debit-filter/debit-filter.component';
 import { CreditFilterComponent } from './components/credit-filter/credit-filter.component';
 import { LoanAppComponent } from './components/loan-app/loan-app.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoanAppComponent } from './components/loan-app/loan-app.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LoanAppRoutingModule
+    LoanAppRoutingModule,
+    SharedModule
   ]
 })
 export class LoanAppModule { }

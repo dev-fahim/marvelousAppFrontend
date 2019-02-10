@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="segment mb-3">
     <div class="title">
-      Loan <i class="fas fa-angle-right"></i> Receive <small class="subtitle">Add & Filter</small>
+      Cash <i class="fas fa-angle-right"></i> Loans <small class="subtitle">Add & Filter</small>
     </div>
   </div>
-  <button class="button is-success mb-2" (click)="toggle_modal()" id="add-button">Add Credit</button>
+  <button class="button is-success mb-2" (click)="toggle_modal()" id="add-button" appShadow>Add Recieved Cash Loan</button>
   <div class="row">
     <div class="modal" [ngClass]="{'is-active': show_modal}">
       <div class="modal-background has-background white"></div>
