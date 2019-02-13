@@ -80,8 +80,7 @@ export class LoanGivingCreditAddComponent implements OnInit {
           (next: models.CreditFundRecordPOSTModel) => {
             this.record_data.emit(this.form.value);
             this.loading = false;
-            this.form.reset;
-            this.messages.splice(0, 0, { message: 'Credit fund record ADDED successfuly.', type: 'positive' });
+            this.form.reset();
           },
           (error: errors.AppError) => {
             this.loading = false;

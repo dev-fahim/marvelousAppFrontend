@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CreditFundRecordGETModel } from './../../../../service/models';
 import { Component, OnInit } from '@angular/core';
 import * as errors from '../../../../common';
+import { NotifyService } from 'src/app/service/notify.service';
 
 @Component({
   selector: 'app-loan-giving-credit-list',
@@ -39,7 +40,8 @@ export class LoanGivingCreditListComponent implements OnInit {
 
   constructor(
     private _fundService: LoanGivingService,
-    private _acRoute: ActivatedRoute
+    private _acRoute: ActivatedRoute,
+    private _notify: NotifyService
     ) { }
 
   toggle_modal() {
@@ -121,6 +123,8 @@ export class LoanGivingCreditListComponent implements OnInit {
 
   onAddData(data: CreditFundRecordGETModel) {
     this.all_credit_fund_records.splice(0, 0, data);
+    this._notify.set_notify("success", "record added successfuly", true);
+    this.toggle_modal();
   }
 
   get_sum_amount() {

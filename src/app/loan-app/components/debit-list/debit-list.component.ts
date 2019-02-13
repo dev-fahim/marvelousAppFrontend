@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecordService } from '../../../service/expenditure/record.service';
 import { ActivatedRoute } from '@angular/router';
 import * as errors from '../../../common';
+import { NotifyService } from 'src/app/service/notify.service';
 
 
 @Component({
@@ -47,7 +48,8 @@ export class DebitListComponent implements OnInit, OnDestroy {
   constructor(
     public recordService: RecordService, 
     private _actRoute: ActivatedRoute,
-    private _loanService: LoanService
+    private _loanService: LoanService,
+    private _notify: NotifyService
     ) { }
 
   toggle_modal() {
@@ -135,7 +137,9 @@ export class DebitListComponent implements OnInit, OnDestroy {
   }
 
   onAddExpenditure(expendData = {}) {
-    this.all_expenditures.splice(0, 0, expendData)
+    this.all_expenditures.splice(0, 0, expendData);
+    this._notify.set_notify("success", "Record added successfuly", true);
+    this.toggle_modal();
   }
 
   onReload() {

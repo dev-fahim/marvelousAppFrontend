@@ -49,10 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr appShadow 
-          *ngFor="let data of all_expenditures" 
-          [ngClass]="{'has-background-warning': !data.is_verified}"
-          >
+          <tr appShadow *ngFor="let data of all_expenditures" [ngClass]="{'has-background-warning': !data.is_verified}">
             <td class="selectable"><a class="header" [routerLink]="[ '/main-app/expenditure/record/edit', data.uuid ]">{{
                 data.expend_heading_name |
                 titlecase }}</a></td>

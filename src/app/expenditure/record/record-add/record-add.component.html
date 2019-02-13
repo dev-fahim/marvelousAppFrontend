@@ -7,14 +7,6 @@
       Fund Locked
     </div>
   </article>
-  <article class="message" *ngFor="let message of messages" [ngClass]="{'is-danger animated bounceIn': message.type === 'error', 'is-success animated jackInTheBox': message.type === 'positive'}">
-    <div class="message-header">
-      <p>{{ message.type === 'error'? 'Error' : 'Success' }}</p>
-    </div>
-    <div class="message-body">
-      {{ message.message }}
-    </div>
-  </article>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="label">Debit Head</label>
     <div class="select" [ngClass]="{'is-danger': form.get('expend_heading').touched && !form.get('expend_heading').valid}">

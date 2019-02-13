@@ -1,7 +1,10 @@
-<div class="ui positive floating compact message">
-  <i class="close icon"></i>
-  <div class="header">
-    You are eligible for a reward
+<article class="message is-{{ type }} shadow" *ngIf="notification"
+  [ngClass]="{'global-notification animated slideInRight ease-out': notification}">
+  <div class="message-header">
+    <p>{{ type | titlecase }}</p>
+    <button class="delete" aria-label="delete" (click)="onCloseNotification()"></button>
   </div>
-  <p>Go to your <b>special offers</b> page to see now.</p>
-</div>
+  <div class="message-body">
+    {{ message | titlecase }}
+  </div>
+</article>

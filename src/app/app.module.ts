@@ -1,3 +1,4 @@
+import { NotificationMessageComponent } from './notification-message/notification-message.component';
 import { BackAppService } from './service/back-app/back-app.service';
 import { ArchiveService } from './service/archive/archive.service';
 import { LoginComponent } from './login/login.component';
@@ -24,10 +25,10 @@ import { FundSettingsService } from './service/fund-settings/fund-settings.servi
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/login/auth/httpInterceptor.service';
-import { NotificationMessageComponent } from './notification-message/notification-message.component';
-import { NotificationMessageService } from './notification-message.service';
+
 import { LoanService } from './service/loan/loan.service';
 import { LoanGivingService } from './service/loan-giving/loan-giving.service';
+import { NotifyService } from './service/notify.service';
 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -40,7 +41,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     SidebarComponent,
     ToolbarComponent,
     LoginComponent,
-    NotificationMessageComponent,
+    NotificationMessageComponent
   ],
   imports: [
     LoginModule,
@@ -68,12 +69,12 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     ArchiveService,
     BackAppService,
     LoanGivingService,
+    NotifyService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    },
-    NotificationMessageService
+    }
   ],
   bootstrap: [AppComponent]
 })

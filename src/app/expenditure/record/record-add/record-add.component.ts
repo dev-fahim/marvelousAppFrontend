@@ -88,10 +88,9 @@ export class RecordAddComponent implements OnInit {
     this.recordService.add_record(this.form.value)
       .subscribe(
         (next) => {
-          this.expenditure_added.emit(this.form.value)
+          this.expenditure_added.emit(this.form.value);
           this.form.reset();
-          this.loading = false;
-          this.messages.splice(0, 0, { message: 'Expenditure record ADDED successfuly.', type: 'positive' });
+          return this.loading = false;
         },
         (error: errors.AppError) => {
           this.loading = false;

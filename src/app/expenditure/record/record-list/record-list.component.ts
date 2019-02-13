@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecordService } from '../../../service/expenditure/record.service';
 import { ActivatedRoute } from '@angular/router';
 import * as errors from '../../../common';
+import { NotifyService } from 'src/app/service/notify.service';
 
 @Component({
   selector: 'app-record-list',
@@ -10,6 +11,7 @@ import * as errors from '../../../common';
 })
 export class RecordListComponent implements OnInit, OnDestroy {
   // Todo: Create filter form
+  notification = false;
   all_expenditures: any[] = [];
   loading = true;
   is_verified = '';
@@ -42,7 +44,11 @@ export class RecordListComponent implements OnInit, OnDestroy {
     'ordering'
   ]
 
-  constructor(public recordService: RecordService, private _actRoute: ActivatedRoute) { }
+  constructor(
+    public recordService: RecordService,
+    private _actRoute: ActivatedRoute,
+    private _notify: NotifyService
+    ) { }
 
   toggle_modal() {
     return this.show_modal = !this.show_modal;
@@ -129,7 +135,9 @@ export class RecordListComponent implements OnInit, OnDestroy {
   }
 
   onAddExpenditure(expendData = {}) {
-    this.all_expenditures.splice(0, 0, expendData)
+    this.all_expenditures.splice(0, 0, expendData);
+    this._notify.set_notify("success", "added successfuly", true);
+    this.toggle_modal();
   }
 
   onReload() {

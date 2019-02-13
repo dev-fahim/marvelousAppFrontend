@@ -93,7 +93,6 @@ export class LoanGivingDebitAddComponent implements OnInit {
           this.expenditure_added.emit(this.form.value)
           this.form.reset();
           this.loading = false;
-          this.messages.splice(0, 0, { message: 'Expenditure record ADDED successfuly.', type: 'positive' });
         },
         (error: errors.AppError) => {
           this.loading = false;

@@ -21,6 +21,14 @@ $menu-list-border-left: 3px solid #ffff;
     color: #d10c0c;
 }
 
+.global-notification {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    z-index: 999;
+    width: 400px;
+}
+
 @import'~bulma/bulma';
 
 .login-form {

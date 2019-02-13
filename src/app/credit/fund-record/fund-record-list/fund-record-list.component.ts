@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FundService, CreditFundRecordListFilter } from 'src/app/service/credit/fund.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as errors from '../../../common';
+import { NotifyService } from 'src/app/service/notify.service';
 
 @Component({
   selector: 'app-fund-record-list',
@@ -36,7 +37,12 @@ export class FundRecordListComponent implements OnInit {
     'ordering'
   ]
 
-  constructor(private _fundService: FundService, private _router: Router, private _acRoute: ActivatedRoute) { }
+  constructor(
+    private _fundService: FundService,
+    private _router: Router,
+    private _acRoute: ActivatedRoute,
+    private _notify: NotifyService
+    ) { }
 
   toggle_modal() {
     return this.show_modal = !this.show_modal
@@ -117,6 +123,8 @@ export class FundRecordListComponent implements OnInit {
 
   onAddData(data: CreditFundRecordGETModel) {
     this.all_credit_fund_records.splice(0, 0, data);
+    this._notify.set_notify("success", "Record added successfully", true);
+    this.toggle_modal();
   }
 
   get_sum_amount() {
