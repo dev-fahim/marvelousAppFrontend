@@ -11,6 +11,7 @@ export class BadInput extends AppError {}
 export class Forbidden extends AppError {}
 export class ServerError extends AppError {}
 export class UnexpectedError extends AppError {}
+export class ServerOfflineError extends AppError {}
 
 export function get_http_response_error(error: HttpErrorResponse) {
     if (error.status === 400) {
@@ -27,6 +28,9 @@ export function get_http_response_error(error: HttpErrorResponse) {
     }
     if (error.status === 404) {
         return new NotFound(error);
+    }
+    if (error.status === 0) {
+        return new ServerOfflineError(error);
     }
     return new UnexpectedError(error);
 } 

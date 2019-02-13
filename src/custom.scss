@@ -16,6 +16,11 @@ $menu-list-border-left: 3px solid #ffff;
     z-index: 7;
 }
 
+.error {
+    background-color: #ffc4c4;
+    color: #d10c0c;
+}
+
 @import'~bulma/bulma';
 
 .login-form {

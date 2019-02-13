@@ -45,5 +45,7 @@
         formControlName="expend_date" placeholder="Expend Date">
     </div>
     <button class="button is-primary" type="submit" [ngClass]="{'loading': loading}">Add</button>
-  </form>
+    </form>
+    <hr>
+    <button class="button is-warninhg" (click)="onReset()">Reset</button>
 </div>

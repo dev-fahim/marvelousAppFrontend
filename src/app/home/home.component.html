@@ -132,7 +132,15 @@
   <!-- sidebar-wrapper  -->
   <main class="page-content">
 
-    <div class="container-fluid mb-4">
+    <div *ngIf="is_message" class="container-fluid mb-4">
+      <article *ngIf="serverError" class="message is-danger animated bounceIn">
+        <div class="message-header">
+          <p>Offline</p>
+        </div>
+        <div class="message-body">
+          Please check your internet connection or sure that server is online.
+        </div>
+      </article>
       <article *ngIf="is_locked" class="message is-danger animated bounceIn">
         <div class="message-header">
           <p>Account Limited</p>

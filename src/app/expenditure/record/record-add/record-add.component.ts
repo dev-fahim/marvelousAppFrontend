@@ -108,6 +108,6 @@ export class RecordAddComponent implements OnInit {
   onReset() {
     this.messages = [];
     this.form.reset();
-    this.form.get('extra_description').setValue("");
+    this.form.get('extra_description').setValue('');
   }
 }

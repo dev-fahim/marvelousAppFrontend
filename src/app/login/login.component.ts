@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             setTimeout(() => {
               this.has_error = false;
             }, 1000);
-            return common.throw_http_response_error(error)
+            return common.throw_http_response_error(error);
           }
         )
     }

@@ -44,6 +44,16 @@ export class AuthService {
     );
   }
 
+  getRawUserPermission() {
+    return this._http.get<RootObject>(LOCAL_REST_API_SERVER + 'service/what-do-you-want/').pipe(
+      map(
+        (response: RootObject) => {
+          return response ;
+        }
+      )
+    );
+  }
+
   change_fund_status(status: boolean) {
     return this._http.put(LOCAL_REST_API_SERVER + "credit/fund/settings/edit/", JSON.stringify({is_not_locked: status})).pipe(
       map(

@@ -1,8 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../login/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { RootObject } from '../service/models';
-import * as errors from '../common';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +12,8 @@ export class HomeComponent implements OnInit {
   toggled = true;
   is_approved = true;
   is_locked = false;
+  is_message = false;
+  serverError = false;
 
   constructor(private _auth: AuthService) { }
 
@@ -40,13 +41,20 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    this._auth.getUserPermission()
+    this._auth.getRawUserPermission()
       .subscribe(
         (response) => {
           this.is_approved = response.account_status.is_approved;
+          if (this.is_approved === false) {
+            this.is_message = true;
+          }
         },
-        (error: errors.AppError) => {
-          return this.is_locked = true;
+        (error: HttpErrorResponse) => {
+          this.is_message = true;
+          if (error.status === 403) {
+            return this.is_locked = true;
+          }
+          return this.serverError = true;
         }
       );
   }
