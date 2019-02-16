@@ -30,7 +30,7 @@
               [ngClass]="{'is-danger': expend_heading.touched && expend_by.invalid}">
               <option value="">{{ expenditure_data.expend_heading_name? '':expenditure_data.expend_heading_name }}
               </option>
-              <option value="{{ data.id }}" *ngFor="let data of all_headings">{{ data.heading }}</option>
+              <option value="{{ data.id }}" *ngFor="let data of all_headings">{{ data.heading | titlecase }}</option>
             </select>
           </div>
           <div class="field">

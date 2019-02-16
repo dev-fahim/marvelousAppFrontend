@@ -7,7 +7,7 @@
           <select formControlName="heading" class="ui dropdown" appDropdown>
             <option value="">All</option>
             <option value=" ">All</option>
-            <option value="{{ heading }}" *ngFor="let heading of all_headings">{{ heading }}</option>
+            <option value="{{ heading | titlecase }}" *ngFor="let heading of all_headings">{{ heading }}</option>
           </select>
         </div>
       </div>

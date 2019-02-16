@@ -21,7 +21,7 @@
       <label class="label">Credit Head</label>
       <div class="select">
         <select type="text" formControlName="source">
-          <option value="{{ data.id }}" *ngFor="let data of all_sources">{{ data.source_name }}</option>
+          <option value="{{ data.id }}" *ngFor="let data of all_sources">{{ data.source_name | titlecase }}</option>
         </select>
       </div>
     </div>

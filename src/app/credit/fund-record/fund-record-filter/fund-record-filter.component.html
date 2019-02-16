@@ -6,7 +6,7 @@
       <select formControlName="fund_source">
         <option value="">Select A Credit Head</option>
         <option value=" ">All</option>
-        <option value="{{ data }}" *ngFor="let data of all_credit_fund_sources">{{ data }}</option>
+        <option value="{{ data | titlecase }}" *ngFor="let data of all_credit_fund_sources">{{ data }}</option>
       </select>
     </div>
     <div class="row">

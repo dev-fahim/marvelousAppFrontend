@@ -33,7 +33,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of all_credit_fund_sources" appShadow>
-            <td class="selectable" (click)="set_source_data(data)"><a>{{ data.source_name }}</a></td>
+            <td class="selectable" (click)="set_source_data(data)"><a>{{ data.source_name | titlecase }}</a></td>
             <td>{{ data.added | date }}</td>
             <td>{{ data.updated | date }}</td>
           </tr>

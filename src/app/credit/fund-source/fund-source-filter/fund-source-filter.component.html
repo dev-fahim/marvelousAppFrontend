@@ -1,28 +1,3 @@
-<!--
-<div class="ui segment teal">
-  <h3 class="header">Search Credit Heads</h3>
-  <div class="ui divider"></div>
-  <form class="ui fluid form tiny" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="field" [ngClass]="{'error': form.get('search').invalid && form.get('search').touched}">
-      <label for="search">Search</label>
-      <input type="text" formControlName="search">
-    </div>
-    <div class="field" [ngClass]="{'error': form.get('ordering').invalid && form.get('ordering').touched}">
-      <label for="ordering">Ordering</label>
-      <select class="ui dropdown" formControlName="ordering" appDropdown>
-        <option value="">Default Ordering</option>
-        <option value=" ">All</option>
-        <option value="added">Added - Ascending</option>Name
-        <option value="-added">Added - Descending</option>
-        <option value="source_name">Source Name - Ascending</option>
-        <option value="-source_name">Source Name - Descending</option>
-        <option value="amount">Amount - Ascending</option>
-        <option value="-amount">Amount - Descending</option>
-      </select>
-    </div>
-    <button class="ui icon labeled blue tiny button" [ngClass]="{'loading': loading_on_filter}"><i class="filter icon"></i>Filter</button>
-  </form>
-</div>-->
 <div class="segment">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="field" [ngClass]="{'is-danger': form.get('search').invalid && form.get('search').touched}">

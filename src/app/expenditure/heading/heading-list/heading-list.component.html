@@ -34,7 +34,7 @@
             </thead>
             <tbody>
               <tr appShadow *ngFor="let data of all_headings">
-                <td class="selectable" (click)="set_heading_data(data)"><a>{{ data.heading_name }}</a></td>
+                <td class="selectable" (click)="set_heading_data(data)"><a>{{ data.heading_name | titlecase }}</a></td>
                 <td>{{ data.added | date }}</td>
                 <td>{{ data.updated | date }}</td>
               </tr>
