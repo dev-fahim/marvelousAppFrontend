@@ -72,7 +72,7 @@
     <button class="button is-info is-small mb-3" [ngClass]="{'is-loading': loading}" (click)="onReload()"
         appShadow>Reload</button>
     <div class="row">
-        <div class="col-2">
+        <div class="col-3">
             <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                     Credit Heads <span class="tag is-info is-pulled-right">{{ get_total_credit_heads() }}</span>
@@ -82,10 +82,10 @@
                     [routerLink]="['/main-app/credit/fund/record/list-add']" [queryParams]="{
                     fund_source: data.source_name
                 }">{{
-                    data.source_name }}</button>
+                    data.source_name }}<span class="tag is-link is-pulled-right">{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }} Tk.</span></button>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                     Debit Heads <span class="tag is-info is-pulled-right">{{ get_total_debit_heads() }}</span>
@@ -95,10 +95,10 @@
                     [queryParams]="{ 
                     heading: data.heading_name
                 }">{{
-                    data.heading_name }}</button>
+                    data.heading_name }}<span class="tag is-link is-pulled-right">{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }} Tk.</span></button>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-6">
             <table class="table is-bordered is-narrow is-fullwidth" *ngIf="!is_loading()">
                 <thead class="has-background-light" appShadow>
                     <tr>

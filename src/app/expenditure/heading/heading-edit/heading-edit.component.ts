@@ -23,7 +23,9 @@ export class HeadingEditComponent {
     uuid: '',
     url: '',
     added: '',
-    is_deleted: false
+    is_deleted: false,
+    total: 0,
+    total_this_year: 0
   });
 
   modal_update = false;

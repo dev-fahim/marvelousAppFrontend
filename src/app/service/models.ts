@@ -44,6 +44,8 @@ export interface CreditFundSourceGETModel { // OK
     updated: string;
     uuid: string;
     is_deleted: boolean;
+    total: number;
+    total_this_year: number;
 }
 
 export interface CreditFundSourcePOSTModel { // OK
@@ -217,6 +219,8 @@ export interface ExpenditureHeadingGETModel { // OK
     added: string;
     updated: string;
     is_deleted: boolean;
+    total: number;
+    total_this_year: number;
 }
 
 export interface ExpenditureHeadingPOSTModel { // OK
