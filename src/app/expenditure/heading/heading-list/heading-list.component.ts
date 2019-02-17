@@ -21,7 +21,9 @@ export class HeadingListComponent implements OnInit {
     uuid: '',
     url: '',
     added: '',
-    is_deleted: false
+    is_deleted: false,
+    total: 0,
+    total_this_year: 0
   };
   messages: { message: string, type: string }[];
   uuid: string;

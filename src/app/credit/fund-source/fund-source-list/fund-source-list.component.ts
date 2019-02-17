@@ -20,7 +20,9 @@ export class FundSourceListComponent implements OnInit {
     uuid: '',
     url: '',
     added: '',
-    is_deleted: false
+    is_deleted: false,
+    total: 0,
+    total_this_year: 0
   }
   all_credit_fund_sources: CreditFundSourceGETModel[] = [];
   messages: { message: string, type: string }[] = [];

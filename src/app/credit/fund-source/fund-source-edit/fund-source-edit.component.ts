@@ -24,7 +24,9 @@ export class FundSourceEditComponent implements OnInit {
     is_deleted: false,
     added: '',
     updated: '',
-    uuid: ''
+    uuid: '',
+    total: 0,
+    total_this_year: 0
   });
 
   modal = false;
