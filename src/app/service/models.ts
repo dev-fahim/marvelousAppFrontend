@@ -380,6 +380,13 @@ export interface ExpenditureHistoryModel {
     base_user: number;
 }
 
+// Insight Models
+export interface InsightYearlyModel {
+    month: string;
+    credit: number;
+    debit: number;
+}
+
 // Ajaira Models
 export interface CreditFundAccordinSourceGETModel { // OK
     source_name: string;

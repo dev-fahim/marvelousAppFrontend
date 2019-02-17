@@ -33,6 +33,8 @@ import { NotifyService } from './service/notify.service';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,8 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
       cookieName: 'csrftoken',
       headerName: 'X-CSRFToken',
     }),
-    SharedModule
+    SharedModule,
+    ChartsModule
   ],
   providers: [
     FundService,

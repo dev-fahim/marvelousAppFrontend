@@ -24,6 +24,7 @@ const routes: Routes = [
     { path: 'archive-app', loadChildren: './archive-app/archive-app.module#ArchiveAppModule' },
     { path: 'back-app', loadChildren: './back-app/back-app.module#BackAppModule' },
     { path: 'loan-giving', loadChildren: './loan-giving/loan-giving.module#LoanGivingModule' },
+    { path: 'insight', loadChildren: './insight/insight.module#InsightModule' },
   ], canActivateChild: [AuthChildGuardService], component: HomeComponent },
   { path: 'no-access', component: NoAccessComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LoginRouteGaurdService] },
