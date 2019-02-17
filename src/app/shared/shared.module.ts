@@ -1,14 +1,17 @@
-import { ShadowDirective } from './dropdown.directive';
+import { ShadowDirective } from './shadow.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HoverRowDirective } from './hover-row.directive';
 
 @NgModule({
   declarations: [
-    ShadowDirective
+    ShadowDirective,
+    HoverRowDirective
   ],
   exports: [
     CommonModule,
-    ShadowDirective
+    ShadowDirective,
+    HoverRowDirective,
   ]
 })
 export class SharedModule { }

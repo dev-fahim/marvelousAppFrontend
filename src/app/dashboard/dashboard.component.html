@@ -26,7 +26,7 @@
             <div class="card" appShadow [routerLink]="['/main-app/credit/fund/record/list-add']">
                 <div class="card-content has-text-centered">
                     <p class="title has-text-link is-size-4">Balance</p>
-                    <p class="subtitle is-size-7">Data of {{ get_this_year() }}</p>
+                    <p class="subtitle is-size-7">All data</p>
                     <hr>
                     <p class="title is-size-4">{{ get_remailning_balance() | currency:' ':'symbol':'1.0-0' }}</p>
                     <p class="subtitle">Taka</p>
@@ -99,10 +99,10 @@
             </div>
         </div>
         <div class="col-8">
-            <table class="table is-bordered is-hoverable is-fullwidth" *ngIf="!is_loading()">
+            <table class="table is-bordered is-narrow is-fullwidth" *ngIf="!is_loading()">
                 <thead class="has-background-light" appShadow>
                     <tr>
-                        <th colspan="7">
+                        <th colspan="6">
                             <h3><a routerLink="/main-app/expenditure/record" [queryParams]="{ 
                                         added_date: today
                                     }">Today's record added debit</a></h3>
@@ -114,7 +114,6 @@
                         <th>Added by</th>
                         <th>Amount in Tk</th>
                         <th>Expend Date</th>
-                        <th>Record Added</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,7 +132,6 @@
                         <td>{{ data.added_by | titlecase }}</td>
                         <td>{{ data.amount | currency:' ':'symbol':'1.0-0' }}</td>
                         <td>{{ data.expend_date | date }}</td>
-                        <td>{{ data.added | date }}</td>
                     </tr>
                 </tbody>
             </table>

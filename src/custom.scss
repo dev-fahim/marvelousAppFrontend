@@ -17,8 +17,8 @@ $menu-list-border-left: 3px solid #ffff;
 }
 
 .error {
-    background-color: #ffc4c4;
-    color: #d10c0c;
+    background-color: #ffc4c4 !important;
+    color: #d10c0c !important;
 }
 
 .global-notification {
@@ -27,6 +27,14 @@ $menu-list-border-left: 3px solid #ffff;
     right: 20px;
     z-index: 999;
     width: 400px;
+}
+
+.table-border > th, .table-border > td {
+    border-bottom: 1px solid #ddd !important;
+}
+
+.hovered-row {
+    border-bottom: 3px solid hsl(0, 1%, 75%) !important;
 }
 
 @import'~bulma/bulma';

@@ -21,7 +21,7 @@
       <div class="select" [ngClass]="{'is-danger': form.get('expend_heading').touched && !form.get('expend_heading').valid}">
         <select formControlName="expend_heading">
           <option value="">Select A Head</option>
-          <option value="{{ data.id }}" *ngFor="let data of all_headings">{{ data.heading_name }}</option>
+          <option value="{{ data.id }}" *ngFor="let data of all_headings">{{ data.heading_name | titlecase }}</option>
         </select>
       </div>
       <div class="field">

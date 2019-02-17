@@ -22,7 +22,7 @@
       <app-debit-filter (filter_data)="onFilter($event)"></app-debit-filter>
     </div>
     <div class="col-12 mt-4">
-      <table class="table is-bordered is-striped is-fullwidth">
+      <table class="table is-bordered is-narrow is-fullwidth">
         <thead class="has-background-light" appShadow>
           <tr>
             <th>
@@ -55,7 +55,7 @@
                   titlecase }}</a></td>
             <td>{{ data.description | uppercase }}</td>
             <td><i *ngIf="!data.is_verified" class="attention icon"></i>{{ data.expend_by | titlecase }}</td>
-            <td>{{ data.added_by | titlecase }}</td>
+            <td>{{ data.added_by | titlecase }}<span *ngIf="!data.is_verified" class="tag is-danger is-pulled-right">Not Authorized</span></td>
             <td>{{ data.amount | currency:' ':'symbol':'1.0-0' }}</td>
             <td>{{ data.expend_date | date:'fullDate' }}</td>
             <td>{{ data.added | date:'fullDate' }}</td>
