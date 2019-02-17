@@ -1,5 +1,5 @@
 
-export const DEBUG = true;
+export const DEBUG = false;
 export const STAGE = false;
 
 export let LOCAL_REST_API_SERVER = '';

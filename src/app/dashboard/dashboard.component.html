@@ -82,7 +82,7 @@
                     [routerLink]="['/main-app/credit/fund/record/list-add']" [queryParams]="{
                     fund_source: data.source_name
                 }">{{
-                    data.source_name }}<span class="tag is-link is-pulled-right">{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }} Tk.</span></button>
+                    data.source_name }}<span class="tag is-light is-pulled-right"><b>{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }}</b> Tk.</span></button>
             </div>
         </div>
         <div class="col-3">
@@ -95,7 +95,7 @@
                     [queryParams]="{ 
                     heading: data.heading_name
                 }">{{
-                    data.heading_name }}<span class="tag is-link is-pulled-right">{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }} Tk.</span></button>
+                    data.heading_name }}<span class="tag is-light is-pulled-right"><b>{{ data.total_this_year | currency:' ':'symbol':'1.0-0' }}</b> Tk.</span></button>
             </div>
         </div>
         <div class="col-6">
