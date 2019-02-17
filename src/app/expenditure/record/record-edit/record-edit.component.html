@@ -16,7 +16,7 @@
           </div>
         </article>
         <article class="message" *ngFor="let message of messages"
-        [ngClass]="{'is-danger animated bounceIn': message.type === 'error', 'is-success animated jackInTheBox': message.type === 'positive'}">
+          [ngClass]="{'is-danger animated bounceIn': message.type === 'error', 'is-success animated jackInTheBox': message.type === 'positive'}">
           <div class="message-header">
             <p>{{ message.type === 'error'? 'Error' : 'Success' }}</p>
           </div>
@@ -50,13 +50,23 @@
             <input class="input" [ngClass]="{'is-danger': amount.touched && expend_by.invalid}" type="number"
               formControlName="amount" placeholder="Amount">
           </div>
-          <label class="label">Authorized</label>
-          <div class="select">
-            <select formControlName="is_verified">
-              <option value="">{{ expenditure_data.is_verified? 'Yes' : 'No' }}</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
+          <div class="my-3" *ngIf="!verified_once">
+            <p class="has-text-{{ verified? 'success' : 'danger' }}"><b>
+                This is
+                {{ verified? 'Authorized' : 'Un-authorized' }}</b></p>
+            <button class="button is-{{ verified? 'danger' : 'success' }} mt-1" (click)="toggle_modal_verify()">
+              {{ verified? 'Unauthorize' : 'Authorize' }}
+            </button>
+          </div>
+          <div class="once-done" *ngIf="verified_once">
+            <label class="label">Authorized</label>
+            <div class="select">
+              <select formControlName="is_verified">
+                <option value="">{{ expenditure_data.is_verified? 'Yes' : 'No' }}</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
           </div>
           <div class="field">
             <label class="label">Expend Date. Previous value was {{ expenditure_data.expend_date | date }}</label>
@@ -74,6 +84,21 @@
                 </div>
                 <div class="button is-success mr-2" appShadow (click)="toggle_modal()">Cancel</div>
                 <div class="button is-danger" appShadow (click)="onDelete()" (click)="toggle_modal()">Confirm</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" [ngClass]="{'is-active': modal_verify}">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <div class="segment">
+                <p class="mb-3 is-text-center has-text-{{ verified? 'danger' : 'success' }}"><b>
+                    HEY! You really wanna
+                    {{ verified? 'Un-authorized' : 'Authorized' }} this.
+                  </b>
+                </p>
+                <div class="button is-primary mr-2" appShadow (click)="toggle_modal_verify()">Not really!</div>
+                <div class="button is-{{ verified? 'danger' : 'success' }}" appShadow (click)="onToggleVerify()"
+                  (click)="toggle_modal_verify()">Yeah!</div>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ import * as errors from '../../../common';
 export class HistoryCreditComponent implements OnInit {
 
   all_funds: CreditHistoryModel[] = [];
-  table_columns = ["action by", "action time", "record added", "old head", "new head", "old amount", "new amount", "message"]
+  table_columns = ["action by", "action time", "fund added", "old head", "new head", "old amount", "new amount", "message"]
 
   search = "";
 

@@ -23,6 +23,7 @@ export class RecordEditComponent implements OnInit {
     description: '',
     amount: 0,
     is_verified: false,
+    is_verified_once: false,
     expend_date: '',
     uuid: '',
     added: '',
@@ -32,6 +33,8 @@ export class RecordEditComponent implements OnInit {
     expend_heading: 0,
     is_for_return: false
   };
+  verified = false;
+  verified_once = false;
 
   FUND_LOCKED = false;
   uuid = '';
@@ -67,6 +70,7 @@ export class RecordEditComponent implements OnInit {
   loading = false;
   modal = false;
   modal_update = false;
+  modal_verify = false;
 
   constructor(
     private _acRoute: ActivatedRoute,
@@ -77,11 +81,19 @@ export class RecordEditComponent implements OnInit {
   ) { }
 
   toggle_modal_update() {
-    return this.modal_update = !this.modal_update
+    return this.modal_update = !this.modal_update;
   }
 
   toggle_modal() {
-    return this.modal = !this.modal
+    return this.modal = !this.modal;
+  }
+
+  toggle_modal_verify() {
+    return this.modal_verify = !this.modal_verify;
+  }
+
+  toggle_verified_once() {
+    return this.verified_once = !this.verified_once;
   }
 
   ngOnInit() {
@@ -106,6 +118,8 @@ export class RecordEditComponent implements OnInit {
             extra_description: "",
             is_deleted: false
           })
+          this.verified = result.is_verified;
+          this.verified_once = result.is_verified_once;
         },
         (error: errors.AppError) => {
           this.loading = false;
@@ -167,6 +181,26 @@ export class RecordEditComponent implements OnInit {
         (result) => {
           this.loading = false;
           this.messages.splice(0, 0, { message: 'Expenditure record has been UPDATED successfuly.', type: 'positive' });
+        },
+        (error: errors.AppError) => {
+          this.loading = false;
+          const main_error = errors.throw_http_response_error(error);
+          return this.messages.push({message: main_error.detail, type: main_error.type})
+        }
+      )
+  }
+
+  onToggleVerify() {
+    this.loading = true;
+    this.form.get('is_verified').setValue(!this.verified);
+    return this.recordService.update_record(this.form.value, this.uuid)
+      .subscribe(
+        (result) => {
+          const verify_message = this.verified? 'UN-AUTHORIZED' : 'AUTHORIZED';
+          this.verified = !this.verified;
+          this.toggle_verified_once();
+          this.loading = false;
+          this.messages.splice(0, 0, { message: verify_message + ' successfuly.', type: 'positive' });
         },
         (error: errors.AppError) => {
           this.loading = false;

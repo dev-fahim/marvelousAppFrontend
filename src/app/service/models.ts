@@ -244,6 +244,7 @@ export interface ExpenditureRecordGETModel { // OK
     description: string;
     amount: number;
     is_verified: boolean;
+    is_verified_once: boolean;
     expend_date: string;
     uuid: string;
     added: string;
@@ -292,6 +293,7 @@ export interface LoanExpendGETModel { // OK
     description: string;
     amount: number;
     is_verified: boolean;
+    is_verified_once: boolean;
     expend_date: string;
     uuid: string;
     added: string;
