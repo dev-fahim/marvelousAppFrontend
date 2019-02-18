@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { InsightService } from 'src/app/service/insight/insight.service';
+import { ActivatedRoute } from '@angular/router';
+import { Month } from '../insight-select-month/insight-select-month.component';
 
 const date = new Date();
 
 @Component({
-  selector: 'app-insight-yearly',
-  templateUrl: './insight-yearly.component.html',
-  styleUrls: ['./insight-yearly.component.scss']
+  selector: 'app-insight-monthly',
+  templateUrl: './insight-monthly.component.html',
+  styleUrls: ['./insight-monthly.component.scss']
 })
-export class InsightYearlyComponent implements OnInit {
+export class InsightMonthlyComponent implements OnInit {
 
-  constructor(private _insightService: InsightService) { }
+  this_month = date.getMonth() + 1;
+  month: string = (date.getMonth() + 1).toString();
+  month_name = new Month(this._acRoute.snapshot.paramMap.get('month'))
+
+  selected_month: number = date.getMonth() + 1;
+
+  constructor(private _insightService: InsightService, private _acRoute: ActivatedRoute) { }
   credit_amounts: number[] = [];
   debit_amounts: number[] = [];
   debit_individual_amounts: number[] = [];
   credit_individual_amounts: number[] = [];
-  months: string[] = [];
+  days: string[] = [];
+  display: boolean = false;
 
   public lineChartData: Array<any> = [
     { data: [], label: 'Credit' },
@@ -23,7 +32,7 @@ export class InsightYearlyComponent implements OnInit {
     { data: [], label: 'Credit Individual' },
     { data: [], label: 'Debit Individual' }
   ];
-  public lineChartLabels: Array<any> = this.months;
+  public lineChartLabels: Array<any> = this.days;
   public lineChartOptions: any = {
     responsive: true,
     elements: {
@@ -41,7 +50,7 @@ export class InsightYearlyComponent implements OnInit {
     },
     title: {
       display: true,
-      text: 'Insights of ' + date.getFullYear()
+      text: 'Insights of ' + this.month_name.name
     },
     scales: {
       yAxes: [{
@@ -66,7 +75,7 @@ export class InsightYearlyComponent implements OnInit {
   };
   public lineChartColors: Array<any> = [
     { // dark grey
-      backgroundColor: 'rgba(145, 255, 242,0.1)',
+      backgroundColor: 'rgba(145, 255, 242,0.5)',
       borderColor: 'rgba(40, 155, 142,1)',
       pointBackgroundColor: 'rgba(40, 155, 142,1)',
       pointBorderColor: '#fff',
@@ -74,7 +83,7 @@ export class InsightYearlyComponent implements OnInit {
       pointHoverBorderColor: 'rgba(40, 155, 142,1)'
     },
     { // grey
-      backgroundColor: 'rgba(226, 129, 129,0.1)',
+      backgroundColor: 'rgba(226, 129, 129,0.5)',
       borderColor: 'rgba(211, 19, 19,1)',
       pointBackgroundColor: 'rgba(226, 129, 129,1)',
       pointBorderColor: '#fff',
@@ -82,7 +91,7 @@ export class InsightYearlyComponent implements OnInit {
       pointHoverBorderColor: 'rgba(226, 129, 129,0.8)'
     },
     { // grey
-      backgroundColor: 'rgba(117, 170, 255,0.1)',
+      backgroundColor: 'rgba(117, 170, 255,0.5)',
       borderColor: 'rgba(66, 134, 244,1)',
       pointBackgroundColor: 'rgba(66, 134, 244,1)',
       pointBorderColor: '#fff',
@@ -90,7 +99,7 @@ export class InsightYearlyComponent implements OnInit {
       pointHoverBorderColor: 'rgba(66, 134, 244,0.8)'
     },
     { // grey
-      backgroundColor: 'rgba(0, 0, 0,0.1)',
+      backgroundColor: 'rgba(0, 0, 0,0.5)',
       borderColor: 'rgba(0, 0, 0,1)',
       pointBackgroundColor: 'rgba(0, 0, 0,1)',
       pointBorderColor: '#fff',
@@ -102,7 +111,13 @@ export class InsightYearlyComponent implements OnInit {
   public lineChartType: string = 'line';
 
   ngOnInit() {
-    this._insightService.getInsightYearly()
+    console.log(this.month_name.name);
+    this._acRoute.paramMap.subscribe(
+      (value) => {
+        this.month = value.get('month');
+      }
+    )
+    this._insightService.getInsightMonthly(this.month)
       .subscribe(
         (response) => {
           for (const data of response) {
@@ -110,7 +125,7 @@ export class InsightYearlyComponent implements OnInit {
             this.debit_amounts.push(data.debit);
             this.credit_individual_amounts.push(data.credit_individual);
             this.debit_individual_amounts.push(data.debit_individual);
-            this.months.push(data.month);
+            this.days.push(data.day);
           }
           this.lineChartData = [
             { data: this.credit_amounts, label: 'Credit' },
@@ -118,8 +133,9 @@ export class InsightYearlyComponent implements OnInit {
             { data: this.credit_individual_amounts, label: 'Credit Individual' },
             { data: this.debit_individual_amounts, label: 'Debit Individual' }
           ]
+          this.lineChartLabels = this.days;
+          this.display = true;
         }
       )
   }
-
 }

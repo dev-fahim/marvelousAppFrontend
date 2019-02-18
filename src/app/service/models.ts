@@ -385,6 +385,16 @@ export interface InsightYearlyModel {
     month: string;
     credit: number;
     debit: number;
+    credit_individual: number;
+    debit_individual: number;
+}
+
+export interface InsightMonthlyModel {
+    day: string;
+    credit: number;
+    debit: number;
+    credit_individual: number;
+    debit_individual: number;
 }
 
 // Ajaira Models

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active">
+          Select Month of {{ this_year }}
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"
+        [routerLink]="['/main-app/insight/monthly', this_month.month]">This Month ({{ this_month.name }})</button>
+        <button type="button" class="list-group-item list-group-item-action"
+        *ngFor="let month of all_months" [routerLink]="['/main-app/insight/monthly', month.month]">{{ month.name }}</button>
+      </div>
+    </div>
+  </div>
+</div>
