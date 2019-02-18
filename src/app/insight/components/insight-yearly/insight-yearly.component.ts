@@ -66,14 +66,6 @@ export class InsightYearlyComponent implements OnInit {
     responsiveAnimationDuration: 0, // animation duration after a resize
   };
   public lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(183, 211, 255,0.4)',
-      borderColor: 'rgba(35, 120, 255,1)',
-      pointBackgroundColor: 'rgba(35, 120, 255,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(35, 120, 255,0.8)'
-    },
     { // dark grey
       backgroundColor: 'rgba(145, 255, 242,0.4)',
       borderColor: 'rgba(40, 155, 142,1)',
@@ -81,7 +73,15 @@ export class InsightYearlyComponent implements OnInit {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(40, 155, 142,1)'
-    }
+    },
+    { // grey
+      backgroundColor: 'rgba(226, 129, 129,0.4)',
+      borderColor: 'rgba(211, 19, 19,1)',
+      pointBackgroundColor: 'rgba(226, 129, 129,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(226, 129, 129,0.8)'
+    },
   ];
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
