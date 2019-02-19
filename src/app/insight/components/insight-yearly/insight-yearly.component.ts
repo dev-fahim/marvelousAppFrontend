@@ -13,15 +13,17 @@ export class InsightYearlyComponent implements OnInit {
   constructor(private _insightService: InsightService) { }
   credit_amounts: number[] = [];
   debit_amounts: number[] = [];
+  balance: number[] = [];
   debit_individual_amounts: number[] = [];
   credit_individual_amounts: number[] = [];
   months: string[] = [];
 
   public lineChartData: Array<any> = [
-    { data: [], label: 'Credit' },
-    { data: [], label: 'Debit' },
-    { data: [], label: 'Credit Individual' },
-    { data: [], label: 'Debit Individual' }
+    { data: [], label: 'Credit', fill: '-1' },
+    { data: [], label: 'Debit', fill: '-1' },
+    { data: [], label: 'Balance', borderDash: [5, 5], fill: false },
+    { data: [], label: 'Credit Individual', hidden: true },
+    { data: [], label: 'Debit Individual', hidden: true }
   ];
   public lineChartLabels: Array<any> = this.months;
   public lineChartOptions: any = {
@@ -66,7 +68,7 @@ export class InsightYearlyComponent implements OnInit {
   };
   public lineChartColors: Array<any> = [
     { // dark grey
-      backgroundColor: 'rgba(145, 255, 242,0.1)',
+      backgroundColor: 'rgba(184, 190, 198,0.3)',
       borderColor: 'rgba(40, 155, 142,1)',
       pointBackgroundColor: 'rgba(40, 155, 142,1)',
       pointBorderColor: '#fff',
@@ -74,9 +76,15 @@ export class InsightYearlyComponent implements OnInit {
       pointHoverBorderColor: 'rgba(40, 155, 142,1)'
     },
     { // grey
-      backgroundColor: 'rgba(226, 129, 129,0.1)',
+      backgroundColor: 'rgba(184, 190, 198,0.3)',
       borderColor: 'rgba(211, 19, 19,1)',
       pointBackgroundColor: 'rgba(226, 129, 129,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(226, 129, 129,0.8)'
+    },
+    {
+      borderColor: 'rgba(165, 0, 156, 1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(226, 129, 129,0.8)'
@@ -108,16 +116,19 @@ export class InsightYearlyComponent implements OnInit {
           for (const data of response) {
             this.credit_amounts.push(data.credit);
             this.debit_amounts.push(data.debit);
+            this.balance.push(data.balance);
             this.credit_individual_amounts.push(data.credit_individual);
             this.debit_individual_amounts.push(data.debit_individual);
             this.months.push(data.month);
           }
           this.lineChartData = [
-            { data: this.credit_amounts, label: 'Credit' },
-            { data: this.debit_amounts, label: 'Debit' },
-            { data: this.credit_individual_amounts, label: 'Credit Individual' },
-            { data: this.debit_individual_amounts, label: 'Debit Individual' }
+            { data: this.credit_amounts, label: 'Credit', fill: '-1' },
+            { data: this.debit_amounts, label: 'Debit', fill: '-1' },
+            { data: this.balance, label: 'Balance', borderDash: [5, 5], fill: false },
+            { data: this.credit_individual_amounts, label: 'Credit Individual', hidden: true },
+            { data: this.debit_individual_amounts, label: 'Debit Individual', hidden: true }
           ]
+          this.lineChartLabels = this.months;
         }
       )
   }
